@@ -293,7 +293,7 @@ __LIBS := $(subst $(obj),,$(LIBS)) $(subst $(obj),,$(LIBBOARD))
 #########################################################################
 
 # Always append ALL so that arch config.mk's can add custom ones
-ALL += $(obj)u-boot.srec $(obj)u-boot.bin $(obj)System.map $(U_BOOT_NAND) $(U_BOOT_ONENAND)
+ALL += $(obj)u-boot.srec $(obj)u-boot.hex $(obj)u-boot.bin $(obj)System.map $(U_BOOT_NAND) $(U_BOOT_ONENAND)
 
 all:		$(ALL)
 
@@ -3232,6 +3232,9 @@ sf2-dev-kit_config :  unconfig
 
 stm-som_config : unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm_cortexm3 stm-som emcraft stm32
+
+stm32f4-discovery_config : unconfig
+	@$(MKCONFIG) $(@:_config=) arm arm_cortexm3 stm32f4-discovery stm stm32
 
 stm3220g-eval_config : unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm_cortexm3 stm3220g-eval stm stm32
